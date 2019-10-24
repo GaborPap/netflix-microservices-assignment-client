@@ -1,6 +1,5 @@
 import React, {useContext, useState} from 'react';
 import axios from 'axios';
-import videoContext from '../contexts/VideoContext'
 import {recommendContext} from "../contexts/RecommendContext";
 
 function RecommendationForm(props) {

@@ -1,4 +1,4 @@
-import React, {useContext, useEffect, useState} from 'react';
+import React, {useContext, useEffect} from 'react';
 import {recommendContext} from "../contexts/RecommendContext";
 import Recommendation from "../recommendation/Recommendation";
 import Video from "./Video";
@@ -14,20 +14,20 @@ function VideoDetails(props) {
     useEffect(() => {
 
         fetchData(videoId);
-    }, []);
+    }, );
 
 
     return (
         rec.recommendations !== undefined ?
             <div>
                 {console.log(rec.recommendations)}
-
+                <Video video={rec.video}/>
+                <RecommendationForm videoId={rec.video.id}/>
                 {rec.recommendations.map(recommendation => {
                     return <Recommendation recommendation={recommendation}/>
                 })}
 
-                <Video video={rec.video}/>
-                <RecommendationForm videoId={rec.video.id}/>
+
                 <a href="/">Back to index</a>
             </div>
             :
