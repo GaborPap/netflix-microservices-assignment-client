@@ -1,11 +1,12 @@
 import React from 'react';
-import VideoList from "./video/VideoList";
+import MainContent from "./MainContent";
+
 
 
 function App() {
   return (
     <div className="App">
-     <VideoList/>
+     <MainContent/>
     </div>
   );
 }
