@@ -18,6 +18,22 @@ const recommendReducer = (state, action) => {
                 ...state,
                 recommendations : state.recommendations.filter(recommendation => recommendation.id!==action.recId.recId)
             };
+
+        case "ADD_REC_TO_UPDATE":
+            return {
+                ...state,
+                recToUpdate : action.rec
+            };
+        case "UPDATE":
+            console.log(action.rec.recId)
+        return {
+                ...state,
+            recommendations: state.recommendations.map(
+                    (content) => content.id === action.rec.recId ? {...content, rating : action.rec.rating  , comment: action.rec.comment}
+                        : content
+                )
+
+        }
         default:
             return state;
 

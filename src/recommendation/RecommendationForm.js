@@ -22,19 +22,41 @@ const Container = styled.div`
 
 
 function RecommendationForm(props) {
-    const {videoId, handleAction} = props;
-    const [type1, setUpdate] = useState("ADD")
+    const {handleAction} = props;
+    const {rec} = useContext(recommendContext);
 
-
+    const [updated, setUpdated] = useState(false);
     const [rating, setRating] = useState("5");
     const [comment, setComment] = useState("");
+    const [type1, setUpdate] = useState("ADD");
+    const [recId, setId] = useState("-1");
+
+    if (rec.recToUpdate!==undefined) {
+        if (!updated) {
+            console.log("sdfsdfksdfsdfsdf" + rec.recToUpdate.recommendation.rating)
+            setRating(rec.recToUpdate.recommendation.rating);
+            setComment(rec.recToUpdate.recommendation.comment);
+            setId(rec.recToUpdate.recommendation.id);
+            setUpdated(true);
+            setUpdate("UPDATE");
+        }
+    }
+
+
+
+
+
+
+
+
+
 
     const handleSubmit = (e) => {
         e.preventDefault();
         setRating('');
         setComment('');
 
-        handleAction(rating,comment, '', type1);
+        handleAction(rating,comment,recId, type1);
     };
 
 

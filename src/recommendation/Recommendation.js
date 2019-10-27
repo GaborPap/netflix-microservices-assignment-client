@@ -1,7 +1,8 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import styled from 'styled-components';
 import Rating from '@material-ui/lab/Rating';
 import {Button} from "@material-ui/core";
+import {recommendContext} from "../contexts/RecommendContext";
 
 
 const Body = styled.div`
@@ -19,10 +20,19 @@ const Body = styled.div`
 
 function Recommendation(props) {
     const {recommendation, handleAction} = props;
+    const {dispatch} = useContext(recommendContext);
 
 
     const deleteRecommendation = () => {
         handleAction('','', recommendation.id, 'DELETE');
+
+    };
+
+    const updateRecommendation = () => {
+        console.log("REC to update" + recommendation.comment);
+        dispatch({type: "ADD_REC_TO_UPDATE", rec: {recommendation}});
+
+        handleAction('','', recommendation.id, 'UPDATE');
 
     };
 
@@ -33,6 +43,7 @@ function Recommendation(props) {
             <Rating value={recommendation.rating} readOnly/>
             <div>Comment: {recommendation.comment}</div>
             <Button onClick={deleteRecommendation}>Delete</Button>
+            <Button onClick={updateRecommendation}>Update</Button>
 
 
         </div>

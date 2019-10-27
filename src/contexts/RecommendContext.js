@@ -20,7 +20,12 @@ function RecommendContextProvider(props) {
                     comment: 'a',
                     videoId : 0
                 }
-            ]
+            ],
+            recToUpdate : { id : 0,
+                rating : 0,
+                comment: '',
+                videoId : 0}
+
         }
     ];
 

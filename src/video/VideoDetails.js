@@ -41,7 +41,7 @@ function VideoDetails(props) {
             <Container>
                 {console.log(rec)}
                 <Video video={rec.video} width="100%" height={300} />
-               <Recommendations rec={rec}/>
+               <Recommendations rec1={rec}/>
 
                 <Link to={"/"}><Button variant="contained" color="primary">Back to index</Button></Link>
 
