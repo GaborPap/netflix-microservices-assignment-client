@@ -7,14 +7,14 @@ import {recommendContext} from "../contexts/RecommendContext";
 
 const Body = styled.div`
      background : #9ac0d5;
-      width: 70%;
-           margin: 0 auto;
-       border : solid;
+     width: 70%;
+     margin: 0 auto;
+     border : solid;
      border-color: grey;
      border-radius: 10px;
-       padding: 20px;
-       margin-top: 5px;
-       margin-bottom: 5px;
+     padding: 20px;
+     margin-top: 5px;
+     margin-bottom: 5px;
 `;
 
 
@@ -24,29 +24,29 @@ function Recommendation(props) {
 
 
     const deleteRecommendation = () => {
-        handleAction('','', recommendation.id, 'DELETE');
+        handleAction('', '', recommendation.id, 'DELETE');
 
     };
 
     const updateRecommendation = () => {
-        console.log("REC to update" + recommendation.comment);
+        //   console.log("REC to update" + recommendation.comment);
         dispatch({type: "ADD_REC_TO_UPDATE", rec: {recommendation}});
-
-        handleAction('','', recommendation.id, 'UPDATE');
+        dispatch({type: "SET_UPDATE", updating: false});
+        handleAction('', '', recommendation.id, 'UPDATE');
 
     };
 
     return (
         <Body>
-        <div>
-            Rating:
-            <Rating value={recommendation.rating} readOnly/>
-            <div>Comment: {recommendation.comment}</div>
-            <Button onClick={deleteRecommendation}>Delete</Button>
-            <Button onClick={updateRecommendation}>Update</Button>
+            <div>
+                Rating:
+                <Rating value={recommendation.rating} readOnly/>
+                <div>Comment: {recommendation.comment}</div>
+                <Button onClick={deleteRecommendation}>Delete</Button>
+                <Button onClick={updateRecommendation}>Update</Button>
 
 
-        </div>
+            </div>
         </Body>
     );
 }

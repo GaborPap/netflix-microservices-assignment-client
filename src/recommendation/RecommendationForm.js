@@ -1,5 +1,4 @@
 import React, {useContext, useState} from 'react';
-import axios from 'axios';
 import {recommendContext} from "../contexts/RecommendContext";
 import styled from "styled-components";
 import Rating from '@material-ui/lab/Rating';
@@ -14,26 +13,21 @@ const Container = styled.div`
        padding: 20px;
        margin-top: 5px;
        margin-bottom: 5px;
-
-  
+ 
 `;
-
-
 
 
 function RecommendationForm(props) {
     const {handleAction} = props;
-    const {rec} = useContext(recommendContext);
+    const {rec, dispatch} = useContext(recommendContext);
 
     const [updated, setUpdated] = useState(false);
     const [rating, setRating] = useState("5");
     const [comment, setComment] = useState("");
     const [type1, setUpdate] = useState("ADD");
     const [recId, setId] = useState("-1");
-
     if (rec.recToUpdate!==undefined) {
         if (!updated) {
-            console.log("sdfsdfksdfsdfsdf" + rec.recToUpdate.recommendation.rating)
             setRating(rec.recToUpdate.recommendation.rating);
             setComment(rec.recToUpdate.recommendation.comment);
             setId(rec.recToUpdate.recommendation.id);
@@ -42,19 +36,12 @@ function RecommendationForm(props) {
         }
     }
 
-
-
-
-
-
-
-
-
-
     const handleSubmit = (e) => {
         e.preventDefault();
         setRating('');
         setComment('');
+        setUpdated(false);
+        dispatch({type: "ADD_REC_TO_UPDATE", rec: undefined});
 
         handleAction(rating,comment,recId, type1);
     };
@@ -66,7 +53,7 @@ function RecommendationForm(props) {
             <Rating value={rating} onChange={(e) => setRating(e.target.value)}/>
 
         <input type="text" placeholder="Comment" value={comment} onChange={(e) => setComment(e.target.value)} required/>
-        <input type="submit" value="Add comment" />
+        <input type="submit" value="Submit" />
         </form>
         </Container>
     );

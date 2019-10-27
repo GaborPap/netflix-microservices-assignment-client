@@ -1,8 +1,6 @@
 import React, {useContext, useEffect} from 'react';
 import {recommendContext} from "../contexts/RecommendContext";
-import Recommendation from "../recommendation/Recommendation";
 import Video from "./Video";
-import RecommendationForm from "../recommendation/RecommendationForm";
 import styled from "styled-components";
 import {Link} from "react-router-dom";
 import {Button} from "@material-ui/core";
