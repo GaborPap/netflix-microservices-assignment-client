@@ -3,20 +3,32 @@ import styled from 'styled-components';
 import Rating from '@material-ui/lab/Rating';
 import {Button} from "@material-ui/core";
 import {recommendContext} from "../contexts/RecommendContext";
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import {faTrash, faPen} from "@fortawesome/free-solid-svg-icons";
 
-
-const Body = styled.div`
+const Container = styled.div`
      background : #9ac0d5;
-     width: 70%;
+     width: 100%;
      margin: 0 auto;
      border : solid;
      border-color: grey;
      border-radius: 10px;
-     padding: 20px;
-     margin-top: 5px;
-     margin-bottom: 5px;
+     padding: 10px;
+     margin-top: 10px;
+     margin-bottom: 10px;
+     display: flex;
 `;
 
+const RecContainer = styled.div`
+        width:100%;
+`
+
+const ButtonsContainer = styled.div`
+        position:right;
+        width:7%
+        
+
+`
 
 function Recommendation(props) {
     const {recommendation, handleAction} = props;
@@ -37,17 +49,24 @@ function Recommendation(props) {
     };
 
     return (
-        <Body>
-            <div>
-                Rating:
-                <Rating value={recommendation.rating} readOnly/>
-                <div>Comment: {recommendation.comment}</div>
-                <Button onClick={deleteRecommendation}>Delete</Button>
-                <Button onClick={updateRecommendation}>Update</Button>
+<Container>
+                <RecContainer>
+                    Rating:
+                    <Rating value={recommendation.rating} readOnly/>
+                     <div>Comment: {recommendation.comment}</div>
+                </RecContainer>
+    <ButtonsContainer>
+                <Button onClick={deleteRecommendation}>
+                    <FontAwesomeIcon icon={faTrash} color={"red"}/>
+                </Button>
+                <Button onClick={updateRecommendation}>
+                    <FontAwesomeIcon icon={faPen} color={"orange"} />
+                </Button>
+    </ButtonsContainer>
 
 
-            </div>
-        </Body>
+
+</Container>
     );
 }
 

@@ -8,7 +8,7 @@ const recommendReducer = (state, action) => {
         case "ADD_REC":
             return {
                 ...state,
-                recommendations: [...state.recommendations, {rating: action.rec.rating, comment: action.rec.comment}]
+                recommendations: [...state.recommendations, {id: action.rec.recId, rating: action.rec.rating, comment: action.rec.comment}]
             };
 
         case "DELETE_REC":

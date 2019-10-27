@@ -3,15 +3,15 @@ import VideoList from "./video/VideoList";
 import styled from 'styled-components';
 
 const Body = styled.body`
-  
-  background: #DDD;
+
+  background: #cfe0ea;
    
   
 `;
 
 const Container = styled.div`
    width : 80%;
-    margin-top: 20 px; 
+    margin: 0 auto;
 `;
 
 

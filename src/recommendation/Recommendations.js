@@ -1,8 +1,28 @@
 import React, {useContext} from 'react';
-import RecommendationForm from "./RecommendationForm";
+import RecommendationForm from "./Form/RecommendationForm";
 import Recommendation from "./Recommendation";
 import axios from "axios";
 import {recommendContext} from "../contexts/RecommendContext";
+import styled from 'styled-components';
+
+
+const NoRecommenDations = styled.div`
+        background : red;
+`
+
+const Container = styled.div`
+     background : #9ac0d5;
+     width: 70%;
+     margin: 0 auto;
+     border : solid;
+     border-color: grey;
+     border-radius: 10px;
+     padding: 20px;
+     margin-top: 5px;
+     margin-bottom: 5px;
+`;
+
+
 
 function Recommendations(props) {
     const {rec1} = props;
@@ -24,8 +44,10 @@ function Recommendations(props) {
         if (type === 'ADD') {
             axios.post("http://localhost:8762/videos/addRecommendation", send)
                 .then(res => {
-                    if (res.status === 200)
-                        dispatch({type: "ADD_REC", rec: {rating, comment}})
+                    if (res.status === 200) {
+                        const recId = res.data.id;
+                        dispatch({type: "ADD_REC", rec: {rating, comment, recId}})
+                    }
                 })
         } else if (type === 'DELETE') {
             axios.delete("http://localhost:8762/videos/deleteRec/" + recId)
@@ -46,18 +68,22 @@ function Recommendations(props) {
     };
 
     return (
-        <div>
+
+        <Container>
             <RecommendationForm handleAction={handleAction}/>
+
+            <hr/>
             {
                 rec1.recommendations !== null ?
                     rec1.recommendations.map(recommendation => {
                         return <Recommendation handleAction={handleAction} recommendation={recommendation}/>
                     })
                     :
-                    <div>No recommendations yet!</div>
+                    <NoRecommenDations>No recommendations yet!</NoRecommenDations>
             }
 
-        </div>
+        </Container>
+
     );
 }
 

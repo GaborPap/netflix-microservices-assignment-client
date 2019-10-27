@@ -5,17 +5,18 @@ import styled from "styled-components";
 import {Link} from "react-router-dom";
 import {Button} from "@material-ui/core";
 import Recommendations from "../recommendation/Recommendations";
+import Header from "./Header";
 
 
 const Body = styled.body`
-   width : 100%;
+ height : 100%;
   background : #cfe0ea;
   
 `;
 
 const Container = styled.div`
    width : 50%;
-  margin: 20px auto;
+  margin: 0 auto;
   
   
 `;
@@ -36,8 +37,9 @@ function VideoDetails(props) {
     return (
         rec.recommendations !== undefined ?
             <Body>
+
             <Container>
-                {console.log(rec)}
+                <Header headerTitle={"Details of"+rec.video.name}/>
                 <Video video={rec.video} width="100%" height={300} />
                <Recommendations rec1={rec}/>
 
