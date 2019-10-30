@@ -9,13 +9,10 @@ import {faTrash, faPen} from "@fortawesome/free-solid-svg-icons";
 const Container = styled.div`
      background : #9ac0d5;
      width: 100%;
-     margin: 0 auto;
-     border : solid;
-     border-color: grey;
+     border: solid grey;
      border-radius: 10px;
      padding: 10px;
-     margin-top: 10px;
-     margin-bottom: 10px;
+     margin: 10px auto;
      display: flex;
 `;
 
@@ -24,9 +21,14 @@ const RecContainer = styled.div`
 `;
 
 const ButtonsContainer = styled.div`
-        position:right;
         width:7%
 `;
+
+const ButtonHover = styled(Button)`
+    &:hover {
+     width: 110%;
+    }
+`
 
 function Recommendation(props) {
     const {recommendation} = props;
@@ -52,12 +54,12 @@ function Recommendation(props) {
                 <div>Comment: {recommendation.comment}</div>
             </RecContainer>
             <ButtonsContainer>
-                <Button onClick={deleteRecommendation}>
+                <ButtonHover onClick={deleteRecommendation}>
                     <FontAwesomeIcon icon={faTrash} color={"red"}/>
-                </Button>
-                <Button onClick={updateRecommendation}>
+                </ButtonHover>
+                <ButtonHover onClick={updateRecommendation}>
                     <FontAwesomeIcon icon={faPen} color={"orange"}/>
-                </Button>
+                </ButtonHover>
             </ButtonsContainer>
 
 

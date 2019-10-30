@@ -32,9 +32,8 @@ function VideoDetails(props) {
     const {rec, fetchData} = useContext(recommendContext);
 
     useEffect(() => {
-
         fetchData(videoId);
-    }, []);
+    }, [videoId, fetchData]);
 
 
     return (

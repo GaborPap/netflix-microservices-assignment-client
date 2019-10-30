@@ -6,10 +6,20 @@ const recommendReducer = (state, action) => {
                 recommendations: action.data.recommendations
             };
         case "ADD_REC":
+            let recommendations = state.recommendations;
+            if (state.recommendations === null) {
+                recommendations = [];
+            }
+
             return {
                 ...state,
-                recommendations: [...state.recommendations, {id: action.rec.recId, rating: action.rec.rating, comment: action.rec.comment}]
+                recommendations: [...recommendations, {
+                    id: action.rec.recId,
+                    rating: action.rec.rating,
+                    comment: action.rec.comment
+                }]
             };
+
 
         case "DELETE_REC":
             return {

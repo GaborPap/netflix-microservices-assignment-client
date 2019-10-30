@@ -5,7 +5,9 @@ import styled from 'styled-components';
 
 
 const NoRecommenDations = styled.div`
-        background : red;
+        text-align: center;
+        color: red;
+        font-weight: bold;
 `;
 
 const Container = styled.div`

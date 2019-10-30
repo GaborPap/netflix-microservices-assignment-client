@@ -39,11 +39,11 @@ function RecommendContextProvider(props) {
             })
     };
 
-    const handleAction = (rating, comment, recId, type, rec1) => {
+    const handleAction = (rating, comment, recId, type, videoId) => {
         let send = {
             rating: rating,
             comment: comment,
-            videoId: rec1
+            videoId: videoId
         };
 
         axios.defaults.headers.common = {
@@ -52,9 +52,11 @@ function RecommendContextProvider(props) {
 
 
         if (type === 'ADD') {
+            console.log(send);
             axios.post("http://localhost:8762/videos/addRecommendation", send)
                 .then(res => {
                     if (res.status === 200) {
+
                         const recId = res.data.id;
                         dispatch({type: "ADD_REC", rec: {rating, comment, recId}})
                     }

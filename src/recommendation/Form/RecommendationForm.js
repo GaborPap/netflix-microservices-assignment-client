@@ -75,7 +75,7 @@ function RecommendationForm(props) {
         setUpdated(false);
         dispatch({type: "ADD_REC_TO_UPDATE", rec: undefined});
 
-        handleAction(rating, comment, recId, type1);
+        handleAction(rating, comment, recId, type1, rec.video.id);
     };
     const formHeaderText = !updated ? "Add new comment" : "Update comment";
 
