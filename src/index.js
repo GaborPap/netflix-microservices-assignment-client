@@ -14,10 +14,9 @@ const routing = (
     <Router>
         <VideoContextProvider>
             <Route exact path="/" component={App}/>
-
-        <RecommendContextProvider>
-            <Route path="/video/:videoId" component={VideoDetails}/>
-        </RecommendContextProvider>
+            <RecommendContextProvider>
+                <Route path="/video/:videoId" component={VideoDetails}/>
+            </RecommendContextProvider>
         </VideoContextProvider>
 
     </Router>

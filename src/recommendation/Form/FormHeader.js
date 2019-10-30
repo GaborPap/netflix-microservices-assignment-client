@@ -5,6 +5,7 @@ const FormHead = styled.div`
     font-weight : bold;
     margin-bottom: 5px;
     text-align: center;
+    font-size: 2em;
    
 `;
 

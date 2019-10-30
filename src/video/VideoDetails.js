@@ -9,16 +9,20 @@ import Header from "./Header";
 
 
 const Body = styled.body`
- height : 100%;
-  background : #cfe0ea;
+    height : 100%;
+    background : #cfe0ea;
   
 `;
 
 const Container = styled.div`
-   width : 50%;
-  margin: 0 auto;
+    width : 50%;
+    margin: 0 auto;
   
-  
+`;
+
+const LinkCenter = styled.div`
+    margin: 0  auto;
+    text-align: center;
 `;
 
 function VideoDetails(props) {
@@ -26,7 +30,6 @@ function VideoDetails(props) {
     const videoId = props.match.params.videoId;
 
     const {rec, fetchData} = useContext(recommendContext);
-
 
     useEffect(() => {
 
@@ -38,18 +41,18 @@ function VideoDetails(props) {
         rec.recommendations !== undefined ?
             <Body>
 
-            <Container>
-                <Header headerTitle={"Details of"+rec.video.name}/>
-                <Video video={rec.video} width="100%" height={300} />
-               <Recommendations rec1={rec}/>
-
-                <Link to={"/"}><Button variant="contained" color="primary">Back to index</Button></Link>
-
-            </Container>
+                <Container>
+                    <Header headerTitle={"Details of" + rec.video.name}/>
+                    <Video video={rec.video} width="100%" height={300}/>
+                    <Recommendations rec1={rec}/>
+                    <LinkCenter>
+                        <Link to={"/"}><Button variant="contained" color="primary">Back to index</Button></Link>
+                    </LinkCenter>
+                </Container>
             </Body>
             :
             <div>
-                Loading
+                Loading...
             </div>
 
 

@@ -11,14 +11,14 @@ export default function VideoContextProvider(props){
             name : '',
             url: ''
         }
-     ]
+     ];
 
 
     const [video, dispatch] = useReducer(videoReducer, initialState);
 
     useEffect( () => {
     fetchData();
-    }, [])
+    }, []);
 
     const fetchData = () => {
     axios.get("http://localhost:8762/videos/allVideos")

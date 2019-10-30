@@ -21,19 +21,16 @@ const Container = styled.div`
 
 const RecContainer = styled.div`
         width:100%;
-`
+`;
 
 const ButtonsContainer = styled.div`
         position:right;
         width:7%
-        
-
-`
+`;
 
 function Recommendation(props) {
-    const {recommendation, handleAction} = props;
-    const {dispatch} = useContext(recommendContext);
-
+    const {recommendation} = props;
+    const {dispatch, handleAction} = useContext(recommendContext);
 
     const deleteRecommendation = () => {
         handleAction('', '', recommendation.id, 'DELETE');
@@ -41,7 +38,6 @@ function Recommendation(props) {
     };
 
     const updateRecommendation = () => {
-        //   console.log("REC to update" + recommendation.comment);
         dispatch({type: "ADD_REC_TO_UPDATE", rec: {recommendation}});
         dispatch({type: "SET_UPDATE", updating: false});
         handleAction('', '', recommendation.id, 'UPDATE');
@@ -49,24 +45,23 @@ function Recommendation(props) {
     };
 
     return (
-<Container>
-                <RecContainer>
-                    Rating:
-                    <Rating value={recommendation.rating} readOnly/>
-                     <div>Comment: {recommendation.comment}</div>
-                </RecContainer>
-    <ButtonsContainer>
+        <Container>
+            <RecContainer>
+                Rating:
+                <Rating value={recommendation.rating} readOnly/>
+                <div>Comment: {recommendation.comment}</div>
+            </RecContainer>
+            <ButtonsContainer>
                 <Button onClick={deleteRecommendation}>
                     <FontAwesomeIcon icon={faTrash} color={"red"}/>
                 </Button>
                 <Button onClick={updateRecommendation}>
-                    <FontAwesomeIcon icon={faPen} color={"orange"} />
+                    <FontAwesomeIcon icon={faPen} color={"orange"}/>
                 </Button>
-    </ButtonsContainer>
+            </ButtonsContainer>
 
 
-
-</Container>
+        </Container>
     );
 }
 

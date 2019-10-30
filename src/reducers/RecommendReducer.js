@@ -33,7 +33,6 @@ const recommendReducer = (state, action) => {
                         }
                         : content
                 )
-
             };
 
         default:
