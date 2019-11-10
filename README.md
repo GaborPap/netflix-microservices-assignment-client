@@ -1,3 +1,21 @@
+**UI for the video list application**
+
+***Main page***
+
+![Main page](/video_list_main_page.jpg?s=100)
+
+
+On main page are listed our favourite videos. 
+
+***Details page***
+
+
+
+On details page we can see the details of selected video with the recommendations. 
+
+
+
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
