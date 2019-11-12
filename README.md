@@ -1,4 +1,4 @@
-**UI for the video list application**
+**UI for the Video provider site**
 
 The backend of the application you can find [here](https://github.com/GaborPap/Netflix-microservices-assignment)
 
